@@ -1,432 +1,427 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sweet Souls Member Card Generator</title>
+<meta name="theme-color" content="#ffe4ef">
+<title>For Ruhi 💗 — From Fahim</title>
 
 <style>
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
+:root {
+    --pink: #ff4f98;
+    --dark-pink: #d92c78;
+    --light-pink: #fff0f6;
+    --white: #ffffff;
+}
+
 body {
-    margin: 0;
-    padding: 16px 12px 35px;
-    font-family: "Trebuchet MS", Arial, sans-serif;
-    background: linear-gradient(135deg, #eadbff, #d9fff5);
-    color: #383044;
-}
-
-button, input {
-    font: inherit;
-}
-
-button {
-    cursor: pointer;
-}
-
-.login-box {
-    max-width: 390px;
-    margin: 60px auto;
-    padding: 28px 22px;
-    border-radius: 25px;
-    background: #fff;
-    text-align: center;
-    box-shadow: 0 10px 35px #b15aab30;
-    animation: loginAppear .8s ease;
-}
-
-@keyframes loginAppear {
-    from {
-        opacity: 0;
-        transform: translateY(25px) scale(.96);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-@keyframes heartBeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.15); }
-}
-
-.login-heart {
-    font-size: 58px;
-    animation: heartBeat 1.6s infinite;
-}
-
-.login-box h1 {
-    color: #c02b79;
-    margin-bottom: 8px;
-}
-
-input {
-    width: 100%;
-    padding: 13px;
-    margin: 7px 0 12px;
-    border: 1px solid #e8c1da;
-    border-radius: 12px;
-    background: #fffafd;
-    outline: none;
-}
-
-input:focus {
-    border-color: #d34491;
-    box-shadow: 0 0 8px #e99bc9;
-}
-
-.btn {
-    display: block;
-    width: 100%;
-    padding: 13px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 13px;
-    color: #fff;
-    font-weight: bold;
-    background: linear-gradient(100deg, #f044a0, #9860f5);
-    box-shadow: 0 5px 15px #c16acb35;
-    transition: transform .2s;
-}
-
-.btn:active {
-    transform: scale(.97);
-}
-
-.panel {
-    max-width: 650px;
-    margin: 18px auto;
-    padding: 22px;
-    background: #fff;
-    border-radius: 25px;
-    box-shadow: 0 10px 30px #55335512;
-}
-
-.heading {
-    text-align: center;
-    color: #bd337c;
-}
-
-.panel h2 {
-    color: #bd337c;
-    margin-top: 0;
-}
-
-label {
-    display: block;
-    margin-top: 8px;
-    font-weight: bold;
-}
-
-.hidden {
-    display: none !important;
-}
-
-/* COLOR CHOOSER */
-
-.palette {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.color-btn {
-    padding: 16px 6px;
-    border-radius: 15px;
-    color: #fff;
-    font-weight: bold;
-    border: 3px solid transparent;
-}
-
-.color-btn.active {
-    border-color: #25202a;
-    box-shadow: 0 0 0 2px white inset;
-}
-
-/* MEMBER CARD */
-
-#preview {
-    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
     overflow: hidden;
-    margin-top: 15px;
-}
-
-#card {
-    --main: #84365f;
-    --accent: #f4b6d1;
-    --bg: #fff5fa;
-
-    width: 100%;
-    aspect-ratio: 1000 / 631;
-    position: relative;
-    overflow: hidden;
-    padding: 2.5%;
-    border: 7px solid var(--accent);
-    border-radius: 23px;
-    background: var(--bg);
-    color: var(--main);
-    box-shadow: 0 5px 18px #713c5b20;
-    isolation: isolate;
-}
-
-/* Soft decorative background */
-
-#card::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    width: 36%;
-    aspect-ratio: 1;
-    right: -12%;
-    top: -28%;
-    border-radius: 50%;
-    background: var(--accent);
-    opacity: .18;
-}
-
-/* No FX text above the logo */
-
-.card-title {
-    text-align: center;
-    font-weight: 900;
-    font-size: clamp(13px, 3.2vw, 27px);
-    line-height: 1.2;
-    position: relative;
-}
-
-.card-subtitle {
-    text-align: center;
-    font-weight: bold;
-    font-size: clamp(6px, 1.45vw, 13px);
-    letter-spacing: 3px;
-    margin-top: 5px;
-}
-
-/* Card body */
-
-.card-content {
+    font-family: Arial, "Noto Sans Bengali", sans-serif;
+    color: #a51d61;
+    background:
+        radial-gradient(ellipse at top left, #ffffff 0%, transparent 45%),
+        radial-gradient(ellipse at bottom right, #ffc7df 0%, transparent 48%),
+        linear-gradient(135deg, #fff8fb, #ffe0ed, #fff);
     display: flex;
     align-items: center;
-    gap: 3%;
-    margin-top: 3%;
-    position: relative;
-    z-index: 2;
+    justify-content: center;
+    padding: 15px;
 }
 
-#cardPhoto {
-    width: 29%;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    border-radius: 15px;
-    border: 4px solid var(--accent);
-    background: #f4e7ef;
+/* Falling hearts and petals */
+#falling-items {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.falling-item {
+    position: absolute;
+    top: -45px;
+    animation: fall linear infinite;
+    opacity: 0.8;
+    filter: drop-shadow(0 2px 5px #ff8fbe55);
+    will-change: transform;
+}
+
+@keyframes fall {
+    0% {
+        transform: translate3d(0, -40px, 0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.9;
+    }
+    50% {
+        transform: translate3d(35px, 55vh, 0) rotate(180deg);
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate3d(-25px, 110vh, 0) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Main card with animated LED border */
+.card {
+    width: min(100%, 420px);
+    height: min(690px, calc(100dvh - 30px));
+    min-height: 430px;
+    position: relative;
+    isolation: isolate;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.91);
+    box-shadow:
+        0 0 18px #ff70ad50,
+        0 15px 45px #d83f8540,
+        inset 0 0 25px #fff0f7;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Pink and white LED outline */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 3px;
+    border-radius: 28px;
+    background: linear-gradient(
+        135deg,
+        #ff4f98,
+        #ffffff,
+        #ffb6d4,
+        #ff4f98,
+        #fff,
+        #ff70ad
+    );
+    background-size: 300% 300%;
+    animation: ledGlow 5s ease infinite;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes ledGlow {
+    0% {
+        background-position: 0% 50%;
+        filter: brightness(1);
+    }
+    50% {
+        background-position: 100% 50%;
+        filter: brightness(1.2);
+    }
+    100% {
+        background-position: 0% 50%;
+        filter: brightness(1);
+    }
+}
+
+/* Header */
+.header {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 18px 12px 10px;
     flex-shrink: 0;
 }
 
-.details {
-    min-width: 0;
+.names {
+    font-size: clamp(12px, 3.5vw, 15px);
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    color: #d52b79;
+    text-shadow: 0 0 12px #ffb6d7;
+}
+
+.small-line {
+    width: 65px;
+    height: 3px;
+    border-radius: 10px;
+    margin: 10px auto 0;
+    background: linear-gradient(90deg, #ff5da2, #ffd4e6, #ff5da2);
+    box-shadow: 0 0 10px #ff8dbc;
+}
+
+/* Progress dots */
+.progress {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 12px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ffd1e4;
+    transition: 0.3s;
+}
+
+.dot.active {
+    width: 23px;
+    border-radius: 10px;
+    background: #ff4f98;
+    box-shadow: 0 0 10px #ff9ac5;
+}
+
+/* Pages */
+.pages {
     flex: 1;
-    font-size: clamp(7px, 1.65vw, 15px);
+    min-height: 0;
+    position: relative;
+}
+
+.page {
+    position: absolute;
+    inset: 0;
+    padding: 12px 17px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 13px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(15px) scale(0.97);
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease,
+        visibility 0.5s;
+}
+
+.page.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+/* Smaller caption boxes */
+.caption {
+    width: fit-content;
+    max-width: 88%;
+    padding: 11px 14px;
+    margin: 3px auto;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #fff7fb, #ffe8f2);
+    border: 1px solid #ffb1d1;
+    color: #a51d61;
+    font-size: clamp(14px, 3.8vw, 17px);
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+    box-shadow:
+        0 4px 14px #ff80b526,
+        inset 0 0 10px #fff;
+    animation: captionGlow 3s ease-in-out infinite;
+}
+
+@keyframes captionGlow {
+    0%, 100% {
+        box-shadow: 0 4px 14px #ff80b526, inset 0 0 10px #fff;
+    }
+    50% {
+        box-shadow: 0 4px 19px #ff80b550, inset 0 0 13px #fff;
+    }
+}
+
+.emoji {
+    font-size: clamp(35px, 10vw, 48px);
+    line-height: 1.2;
+    filter: drop-shadow(0 3px 7px #ff6da855);
+    animation: floatEmoji 2.5s ease-in-out infinite;
+}
+
+@keyframes floatEmoji {
+    0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+    50% {
+        transform: translateY(-7px) rotate(3deg);
+    }
+}
+
+h1 {
+    font-size: clamp(23px, 6.5vw, 31px);
+    line-height: 1.35;
+    color: #d92c78;
+    text-shadow: 0 2px 12px #ffb3d4;
     overflow-wrap: anywhere;
 }
 
-.details p {
-    margin: 2.1% 0;
+.subtitle {
+    color: #bd4b82;
+    font-size: 14px;
+    line-height: 1.6;
 }
 
-.member-name {
-    font-size: clamp(10px, 2.3vw, 21px);
+/* Final page */
+.final-title {
+    font-size: clamp(30px, 9vw, 42px);
     font-weight: 900;
-}
-
-.role {
-    display: inline-block;
-    background: var(--accent);
-    color: var(--main);
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-weight: bold;
-}
-
-/* Flower decoration on right side */
-
-.card-flowers {
-    position: absolute;
-    right: 2%;
-    top: 30%;
-    width: 15%;
-    height: 48%;
-    z-index: 1;
-    pointer-events: none;
-    opacity: .8;
-}
-
-.card-flowers span {
-    position: absolute;
-    font-size: clamp(15px, 4vw, 36px);
-    filter: drop-shadow(0 2px 2px #9b5b8030);
-}
-
-.card-flowers span:nth-child(1) {
-    top: 0;
-    right: 12%;
-    transform: rotate(12deg);
-}
-
-.card-flowers span:nth-child(2) {
-    top: 27%;
-    right: 42%;
-    transform: rotate(-18deg);
-}
-
-.card-flowers span:nth-child(3) {
-    top: 55%;
-    right: 0;
-    transform: rotate(18deg);
-}
-
-.card-flowers span:nth-child(4) {
-    top: 76%;
-    right: 35%;
-    font-size: clamp(12px, 3vw, 26px);
-}
-
-.card-footer {
-    position: absolute;
-    left: 3%;
-    right: 3%;
-    bottom: 2.5%;
-    text-align: center;
-    border-top: 1px solid var(--accent);
-    padding-top: 1.2%;
-    font-size: clamp(6px, 1.4vw, 12px);
-    font-weight: bold;
     letter-spacing: 1px;
-    z-index: 2;
+    background: linear-gradient(120deg, #ff398c, #d62d8a, #ff80b5, #e42e7e);
+    background-size: 250% auto;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: finalShine 3s linear infinite;
 }
 
-#card[data-palette="gold"] {
-    --main: #49347b;
-    --accent: #f4d27c;
-    --bg: #fffaf0;
+@keyframes finalShine {
+    to {
+        background-position: 250% center;
+    }
 }
 
-#card[data-palette="emerald"] {
-    --main: #176b55;
-    --accent: #9ce6bd;
-    --bg: #f0fff5;
+.final-name {
+    font-size: clamp(18px, 5vw, 24px);
+    color: #d92c78;
+    font-weight: bold;
+    text-shadow: 0 0 12px #ffb8d6;
 }
 
-#card[data-palette="blue"] {
-    --main: #174b91;
-    --accent: #a8d7ff;
-    --bg: #f2f8ff;
+.love-message {
+    width: fit-content;
+    max-width: 92%;
+    border: 1px solid #ff9fc8;
+    border-radius: 17px;
+    padding: 10px 14px;
+    color: #a51d61;
+    background: linear-gradient(135deg, #fff, #fff0f7);
+    font-size: 14px;
+    line-height: 1.7;
+    box-shadow: 0 0 16px #ffafd044;
 }
 
-#card[data-palette="lavender"] {
-    --main: #8060b0;
-    --accent: #e0c8ff;
-    --bg: #fcf7ff;
-}
-
-#card[data-palette="rose"] {
-    --main: #c72e69;
-    --accent: #ffb9d4;
-    --bg: #fff4f8;
-}
-
-#card[data-palette="teal"] {
-    --main: #087e8b;
-    --accent: #a5ece9;
-    --bg: #f0ffff;
-}
-
-#card[data-palette="burgundy"] {
-    --main: #771e39;
-    --accent: #e8a5b6;
-    --bg: #fff5f7;
-}
-
-#card[data-palette="silver"] {
-    --main: #586575;
-    --accent: #c8d1db;
-    --bg: #f7f9fc;
-}
-
-/* LOVE POPUP */
-
-#lovePopup {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    display: none;
+/* Buttons */
+.button-row {
+    display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-    background: #201024d9;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 5px;
 }
 
-.love-box {
-    position: relative;
-    width: 100%;
-    max-width: 350px;
-    overflow: hidden;
-    text-align: center;
-    padding: 30px 22px;
-    border-radius: 25px;
-    background: linear-gradient(135deg, #fff0f7, #eee3ff);
-    animation: loginAppear .5s ease;
-}
-
-.big-heart {
-    font-size: 65px;
-    animation: heartBeat 1s infinite;
-}
-
-.love-box h2 {
-    color: #dc3385;
-}
-
-.love-text {
-    color: #70428e;
+button,
+.whatsapp-btn {
+    min-height: 42px;
+    padding: 11px 19px;
+    border: none;
+    border-radius: 50px;
+    font-size: 14px;
     font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.love-particle {
-    position: absolute;
-    bottom: -30px;
-    animation: rise 4s linear infinite;
-    pointer-events: none;
+button:active,
+.whatsapp-btn:active {
+    transform: scale(0.96);
 }
 
-@keyframes rise {
-    to {
-        transform: translateY(-380px) rotate(40deg);
-        opacity: 0;
+.next-btn {
+    color: white;
+    background: linear-gradient(120deg, #ff4595, #e52b83);
+    box-shadow: 0 5px 16px #ff5ca44c;
+}
+
+.back-btn {
+    color: #d92c78;
+    background: white;
+    border: 1px solid #ffacd0;
+}
+
+.whatsapp-btn {
+    color: white;
+    background: linear-gradient(120deg, #25c866, #0eaa58);
+    box-shadow: 0 5px 17px #25c86640;
+    animation: buttonPulse 2s ease-in-out infinite;
+}
+
+@keyframes buttonPulse {
+    0%, 100% {
+        box-shadow: 0 5px 17px #25c86640;
+    }
+    50% {
+        box-shadow: 0 5px 24px #25c86680;
     }
 }
 
-@media (max-width: 400px) {
-    .panel {
-        padding: 15px;
+.footer {
+    text-align: center;
+    padding: 9px 8px 14px;
+    color: #c94d87;
+    font-size: 11px;
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+}
+
+/* Small screens */
+@media (max-height: 600px) {
+    .card {
+        height: calc(100dvh - 20px);
+        min-height: 0;
     }
 
-    #card {
-        border-width: 4px;
-        border-radius: 14px;
+    .header {
+        padding-top: 10px;
+        padding-bottom: 4px;
     }
 
-    #cardPhoto {
-        border-width: 2px;
-        border-radius: 9px;
+    .page {
+        gap: 8px;
+        padding-top: 6px;
+        padding-bottom: 8px;
     }
 
-    .card-flowers {
-        right: 1%;
+    .caption {
+        padding: 8px 11px;
+        margin: 1px auto;
+    }
+
+    .emoji {
+        font-size: 32px;
+    }
+
+    .footer {
+        padding: 4px 5px 8px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 10s !important;
+        transition-duration: 0.2s !important;
     }
 }
 </style>
@@ -434,611 +429,220 @@ label {
 
 <body>
 
-<!-- LOGIN PAGE -->
+<div id="falling-items" aria-hidden="true"></div>
 
-<section class="login-box" id="loginBox">
-    <div class="login-heart">💗</div>
-    <h1>Sweet Souls</h1>
-    <p>Member Card Generator</p>
+<main class="card">
 
-    <input
-        type="password"
-        id="password"
-        placeholder="Enter Password"
-        autocomplete="off"
-    >
+    <header class="header">
+        <div class="names">♡ Sayma Sultana Ruhi × Fahim Khan ♡</div>
+        <div class="small-line"></div>
 
-    <button class="btn" onclick="login()">
-        Login 💖
-    </button>
-
-    <p id="loginMessage"></p>
-</section>
-
-<!-- LOVE POPUP -->
-
-<div id="lovePopup">
-    <div class="love-box" id="loveBox">
-        <div class="big-heart">💘</div>
-        <h2>I love you too 💘</h2>
-        <p class="love-text">From with owner Fx Fahim</p>
-
-        <button class="btn" onclick="closeLovePopup()">
-            Continue 💗
-        </button>
-    </div>
-</div>
-
-<!-- HOME PAGE -->
-
-<main id="app" style="display:none">
-
-    <h1 class="heading">🌷 Sweet Souls 🌷</h1>
-    <p style="text-align:center">Member Card Generator</p>
-
-    <section class="panel">
-        <h2>🪪 Member Details</h2>
-
-        <form id="memberForm">
-
-            <label>Member Name</label>
-            <input
-                id="name"
-                type="text"
-                placeholder="Enter member name"
-                required
-            >
-
-            <label>Date of Birth</label>
-            <input
-                id="dob"
-                type="text"
-                placeholder="Example: 12-10-2008"
-                inputmode="text"
-                required
-            >
-
-            <label>Class</label>
-            <input
-                id="className"
-                type="text"
-                placeholder="Enter class"
-                required
-            >
-
-            <label>Address</label>
-            <input
-                id="address"
-                type="text"
-                placeholder="Enter address"
-                required
-            >
-
-            <label>Member Photo</label>
-            <input
-                id="photo"
-                type="file"
-                accept="image/*"
-                required
-            >
-
-            <button class="btn" type="submit">
-                Generate Member Card ✨
-            </button>
-
-        </form>
-    </section>
-
-    <!-- COLOR SELECTOR -->
-
-    <section class="panel hidden" id="palettePanel">
-        <h2>🎨 Choose Card Color</h2>
-
-        <div class="palette">
-
-            <button type="button" class="color-btn active"
-                data-palette="gold" style="background:#49347b">
-                Royal Gold
-            </button>
-
-            <button type="button" class="color-btn"
-                data-palette="emerald" style="background:#176b55">
-                Emerald
-            </button>
-
-            <button type="button" class="color-btn"
-                data-palette="blue" style="background:#174b91">
-                Royal Blue
-            </button>
-
-            <button type="button" class="color-btn"
-                data-palette="lavender" style="background:#8060b0">
-                Lavender
-            </button>
-
-            <button type="button" class="color-btn"
-                data-palette="rose" style="background:#c72e69">
-                Rose Pink
-            </button>
-
-            <button type="button" class="color-btn"
-                data-palette="teal" style="background:#087e8b">
-                Teal
-            </button>
-
-            <button type="button" class="color-btn"
-                data-palette="burgundy" style="background:#771e39">
-                Burgundy
-            </button>
-
-            <button type="button" class="color-btn"
-                data-palette="silver" style="background:#586575">
-                Silver
-            </button>
-
+        <div class="progress" aria-label="Page progress">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
         </div>
-    </section>
+    </header>
 
-    <!-- CARD PREVIEW -->
+    <div class="pages">
 
-    <section class="panel hidden" id="previewPanel">
-        <h2>💳 Member Card Preview</h2>
+        <!-- PAGE 1 -->
+        <section class="page active">
+            <div class="emoji">💌</div>
 
-        <div id="preview">
-            <div id="card" data-palette="gold">
+            <h1>Hey, Ruhi!</h1>
 
-                <div class="card-title">
-                    🌷 Sweet Souls 🌷
-                </div>
-
-                <div class="card-subtitle">
-                    OFFICIAL MEMBER CARD
-                </div>
-
-                <div class="card-content">
-
-                    <img id="cardPhoto" alt="Member Photo">
-
-                    <div class="details">
-
-                        <p class="member-name" id="cardName">
-                            Member Name
-                        </p>
-
-                        <p>
-                            <b>Role:</b>
-                            <span class="role" id="cardRole">
-                                MEMBER
-                            </span>
-                        </p>
-
-                        <p>
-                            <b>Date of Birth:</b>
-                            <span id="cardDob">—</span>
-                        </p>
-
-                        <p>
-                            <b>Class:</b>
-                            <span id="cardClass">—</span>
-                        </p>
-
-                        <p>
-                            <b>Address:</b>
-                            <span id="cardAddress">—</span>
-                        </p>
-
-                    </div>
-                </div>
-
-                <!-- Decorative flowers on the right -->
-                <div class="card-flowers" aria-hidden="true">
-                    <span>🌸</span>
-                    <span>🌷</span>
-                    <span>🌼</span>
-                    <span>🌿</span>
-                </div>
-
-                <div class="card-footer">
-                    SWEET SOULS • MEMBER ID CARD
-                </div>
-
+            <div class="caption">
+                তোমার জন্য ছোট্ট একটা সারপ্রাইজ আছে! 🥹💗
             </div>
-        </div>
 
-        <button class="btn" id="downloadBtn">
-            📥 Download Card PNG
-        </button>
-    </section>
+            <p class="subtitle">
+                একটু একটু করে সামনে এগিয়ে যাও... 🌷
+            </p>
+
+            <div class="button-row">
+                <button class="next-btn" onclick="goToPage(1)">
+                    Open Surprise 💗 →
+                </button>
+            </div>
+        </section>
+
+        <!-- PAGE 2 -->
+        <section class="page">
+            <div class="emoji">🌸</div>
+
+            <h1>একটু শোনো, রুহি...</h1>
+
+            <div class="caption">
+                তোমার কাছে আমার কিছু কথা বলার আছে। 💕
+            </div>
+
+            <p class="subtitle">
+                পরের পেজে যাবে? 🥺
+            </p>
+
+            <div class="button-row">
+                <button class="back-btn" onclick="goToPage(0)">
+                    ← Back
+                </button>
+
+                <button class="next-btn" onclick="goToPage(2)">
+                    Next 💗 →
+                </button>
+            </div>
+        </section>
+
+        <!-- PAGE 3 -->
+        <section class="page">
+            <div class="emoji">🥺💗</div>
+
+            <h1>I'm Really Sorry!</h1>
+
+            <div class="caption">
+                রুহি, আমার কোনো কথায় বা কাজে কষ্ট পেয়ে থাকলে আমাকে ক্ষমা করে দিও। তোমাকে কষ্ট দেওয়া আমার উদ্দেশ্য ছিল না। 🥺💗
+            </div>
+
+            <p class="subtitle">
+                আমাদের বন্ধুত্বটা আমার কাছে অনেক মূল্যবান। 🌷
+            </p>
+
+            <div class="button-row">
+                <button class="back-btn" onclick="goToPage(1)">
+                    ← Back
+                </button>
+
+                <button class="next-btn" onclick="goToPage(3)">
+                    Next 💞 →
+                </button>
+            </div>
+        </section>
+
+        <!-- PAGE 4 -->
+        <section class="page">
+            <div class="emoji">🫶🏻🌷</div>
+
+            <h1>রাগ করে থেকো না, প্লিজ!</h1>
+
+            <div class="caption">
+                তুমি আমার অনেক ভালো একজন বন্ধু। আমাদের সুন্দর বন্ধুত্বটা সব সময় এমনই থাকুক। 💗✨
+            </div>
+
+            <p class="subtitle">
+                তোমার জন্য আরও একটা ছোট্ট সারপ্রাইজ আছে... 🎀
+            </p>
+
+            <div class="button-row">
+                <button class="back-btn" onclick="goToPage(2)">
+                    ← Back
+                </button>
+
+                <button class="next-btn" onclick="goToPage(4)">
+                    Final Surprise 💖 →
+                </button>
+            </div>
+        </section>
+
+        <!-- PAGE 5: FINAL SURPRISE -->
+        <section class="page final-page">
+            <div class="emoji">💗🌸💗</div>
+
+            <div class="final-title">
+                I LOVE YOU!
+            </div>
+
+            <div class="final-name">
+                MY BESTIE, RUHI! 🌷
+            </div>
+
+            <div class="love-message">
+                <strong>I Love You, Bestie! 💗</strong><br>
+                Love You So Much! 🫶🏻<br>
+                Forever Best Friends! 💞
+            </div>
+
+            <div class="caption">
+                রুহি, নিচে ক্লিক করে তোমার উত্তর পাঠাও 💌
+            </div>
+
+            <div class="button-row">
+                <a
+                    class="whatsapp-btn"
+                    href="https://wa.me/8801821201027?text=%E0%A6%AB%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%AE%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%E0%A6%93%20%E0%A6%A4%E0%A7%8B%E0%A6%AE%E0%A6%BE%E0%A6%95%E0%A7%87%20%E0%A6%85%E0%A6%A8%E0%A7%87%E0%A6%95%20%E0%A6%AD%E0%A6%BE%E0%A6%B2%E0%A7%8B%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%BF%20%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A7%81!%20%F0%9F%92%97%0A%E0%A6%A4%E0%A7%8B%E0%A6%AE%E0%A6%BE%E0%A6%95%E0%A7%87%20%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%AE%E0%A6%BE%20%E0%A6%95%E0%A6%B0%E0%A7%87%20%E0%A6%A6%E0%A6%BF%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A5%A4%20%E0%A6%86%E0%A6%AE%E0%A6%BE%E0%A6%A6%E0%A7%87%E0%A6%B0%20%E0%A6%AC%E0%A6%A8%E0%A7%8D%E0%A6%A7%E0%A7%81%E0%A6%A4%E0%A7%8D%E0%A6%AC%20%E0%A6%8F%E0%A6%AD%E0%A6%BE%E0%A6%AC%E0%A7%87%E0%A6%87%20%E0%A6%B8%E0%A7%81%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0%20%E0%A6%A5%E0%A6%BE%E0%A6%95%E0%A7%81%E0%A6%95%E0%A5%A4%20%F0%9F%AB%B6"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    💚 এখানে ক্লিক করে উত্তর পাঠাও
+                </a>
+            </div>
+
+            <div class="button-row">
+                <button class="back-btn" onclick="goToPage(3)">
+                    ← Back
+                </button>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="footer">
+        Made with 💗 by Fahim Khan — For Ruhi 🌷
+    </footer>
 
 </main>
 
 <script>
+const pages = document.querySelectorAll(".page");
+const dots = document.querySelectorAll(".dot");
 
-/* LOGIN */
+function goToPage(index) {
+    if (index < 0 || index >= pages.length) return;
 
-let loveTimer;
+    pages.forEach((page, i) => {
+        page.classList.toggle("active", i === index);
+    });
 
-function login() {
-    const entered = document.getElementById("password").value;
-    const message = document.getElementById("loginMessage");
-
-    if (entered === "143") {
-        document.getElementById("loginBox").style.display = "none";
-        document.getElementById("app").style.display = "block";
-        showLovePopup();
-    } else {
-        message.textContent = "Wrong password! Try again 💔";
-        message.style.color = "#d63384";
-    }
-}
-
-/* LOVE POPUP */
-
-function showLovePopup() {
-    const popup = document.getElementById("lovePopup");
-
-    popup.style.display = "flex";
-    createLoveParticles();
-
-    clearTimeout(loveTimer);
-    loveTimer = setTimeout(closeLovePopup, 5000);
-}
-
-function closeLovePopup() {
-    document.getElementById("lovePopup").style.display = "none";
-    clearTimeout(loveTimer);
-}
-
-function createLoveParticles() {
-    const box = document.getElementById("loveBox");
-
-    box.querySelectorAll(".love-particle").forEach(el => el.remove());
-
-    const symbols = ["💗", "💖", "💕", "💘", "✨"];
-
-    for (let i = 0; i < 15; i++) {
-        const particle = document.createElement("span");
-
-        particle.className = "love-particle";
-        particle.textContent =
-            symbols[Math.floor(Math.random() * symbols.length)];
-
-        particle.style.left = Math.random() * 95 + "%";
-        particle.style.animationDelay = Math.random() * 3 + "s";
-        particle.style.fontSize = (14 + Math.random() * 16) + "px";
-
-        box.appendChild(particle);
-    }
-}
-
-/* CARD COLORS */
-
-const palettes = {
-    gold: {
-        main: "#49347b",
-        accent: "#f4d27c",
-        bg: "#fffaf0"
-    },
-
-    emerald: {
-        main: "#176b55",
-        accent: "#9ce6bd",
-        bg: "#f0fff5"
-    },
-
-    blue: {
-        main: "#174b91",
-        accent: "#a8d7ff",
-        bg: "#f2f8ff"
-    },
-
-    lavender: {
-        main: "#8060b0",
-        accent: "#e0c8ff",
-        bg: "#fcf7ff"
-    },
-
-    rose: {
-        main: "#c72e69",
-        accent: "#ffb9d4",
-        bg: "#fff4f8"
-    },
-
-    teal: {
-        main: "#087e8b",
-        accent: "#a5ece9",
-        bg: "#f0ffff"
-    },
-
-    burgundy: {
-        main: "#771e39",
-        accent: "#e8a5b6",
-        bg: "#fff5f7"
-    },
-
-    silver: {
-        main: "#586575",
-        accent: "#c8d1db",
-        bg: "#f7f9fc"
-    }
-};
-
-let selectedPalette = "gold";
-let uploadedPhotoData = "";
-
-function applyPalette(name) {
-    selectedPalette = name;
-
-    const card = document.getElementById("card");
-    card.dataset.palette = name;
-
-    document.querySelectorAll(".color-btn").forEach(button => {
-        button.classList.toggle(
-            "active",
-            button.dataset.palette === name
-        );
+    dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
     });
 }
 
-document.querySelectorAll(".color-btn").forEach(button => {
-    button.addEventListener("click", () => {
-        applyPalette(button.dataset.palette);
-    });
-});
+/* Pink hearts and petals fall from the top */
+const fallingContainer = document.getElementById("falling-items");
 
-/* GENERATE CARD */
+const decorations = [
+    "💗", "♡", "🌸", "💕", "✿", "🤍", "✨", "🌷"
+];
 
-document.getElementById("memberForm")
-.addEventListener("submit", function(event) {
+function createFallingItem() {
+    const item = document.createElement("span");
 
-    event.preventDefault();
+    item.className = "falling-item";
+    item.textContent =
+        decorations[Math.floor(Math.random() * decorations.length)];
 
-    const file = document.getElementById("photo").files[0];
+    item.style.left = Math.random() * 100 + "vw";
+    item.style.fontSize = (12 + Math.random() * 16) + "px";
+    item.style.animationDuration = (6 + Math.random() * 7) + "s";
+    item.style.animationDelay = (Math.random() * 2) + "s";
 
-    if (!file) {
-        alert("Please select a member photo.");
-        return;
-    }
+    fallingContainer.appendChild(item);
 
-    const reader = new FileReader();
+    const duration =
+        parseFloat(item.style.animationDuration) * 1000 +
+        parseFloat(item.style.animationDelay) * 1000;
 
-    reader.onload = function(e) {
-
-        uploadedPhotoData = e.target.result;
-
-        const name = document.getElementById("name").value.trim();
-        const dob = document.getElementById("dob").value.trim();
-        const className = document.getElementById("className").value.trim();
-        const address = document.getElementById("address").value.trim();
-
-        let role = "MEMBER";
-        const lowerName = name.toLowerCase();
-
-        if (lowerName.includes("fahim") || name.includes("ফাহিম")) {
-            role = "OWNER";
-        } else if (
-            lowerName.includes("ruhi") ||
-            lowerName.includes("sumaiya") ||
-            name.includes("রুহি") ||
-            name.includes("সুমাইয়া") ||
-            name.includes("সুমাইয়া")
-        ) {
-            role = "ADMIN";
-        }
-
-        document.getElementById("cardPhoto").src = uploadedPhotoData;
-        document.getElementById("cardName").textContent = name;
-        document.getElementById("cardDob").textContent = dob;
-        document.getElementById("cardClass").textContent = className;
-        document.getElementById("cardAddress").textContent = address;
-        document.getElementById("cardRole").textContent = role;
-
-        document.getElementById("palettePanel").classList.remove("hidden");
-        document.getElementById("previewPanel").classList.remove("hidden");
-
-        applyPalette(selectedPalette);
-
-        document.getElementById("previewPanel")
-            .scrollIntoView({ behavior: "smooth" });
-    };
-
-    reader.readAsDataURL(file);
-});
-
-/* SAFE TEXT FOR SVG */
-
-function escapeXml(value) {
-    return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&apos;");
+    setTimeout(() => {
+        item.remove();
+    }, duration + 500);
 }
 
-/* DOWNLOAD CARD AS PNG */
+/* Keep the animation gentle on mobile */
+for (let i = 0; i < 15; i++) {
+    setTimeout(createFallingItem, i * 300);
+}
 
-document.getElementById("downloadBtn")
-.addEventListener("click", function() {
-
-    if (!uploadedPhotoData) {
-        alert("Please generate a card first.");
-        return;
-    }
-
-    const theme = palettes[selectedPalette];
-
-    const name = escapeXml(
-        document.getElementById("cardName").textContent
-    );
-
-    const role = escapeXml(
-        document.getElementById("cardRole").textContent
-    );
-
-    const dob = escapeXml(
-        document.getElementById("cardDob").textContent
-    );
-
-    const className = escapeXml(
-        document.getElementById("cardClass").textContent
-    );
-
-    const address = escapeXml(
-        document.getElementById("cardAddress").textContent
-    );
-
-    const svg = `
-    <svg xmlns="http://www.w3.org/2000/svg"
-         xmlns:xlink="http://www.w3.org/1999/xlink"
-         width="1000" height="631" viewBox="0 0 1000 631">
-
-        <defs>
-            <clipPath id="photoClip">
-                <rect x="40" y="190" width="245" height="325" rx="22"/>
-            </clipPath>
-        </defs>
-
-        <rect width="1000" height="631" rx="28"
-              fill="${theme.bg}"/>
-
-        <rect x="10" y="10" width="980" height="611"
-              rx="25" fill="none"
-              stroke="${theme.accent}" stroke-width="12"/>
-
-        <circle cx="970" cy="35" r="155"
-                fill="${theme.accent}" opacity=".15"/>
-
-        <text x="500" y="75"
-              text-anchor="middle"
-              font-family="Arial,sans-serif"
-              font-size="43" font-weight="bold"
-              fill="${theme.main}">🌷 Sweet Souls 🌷</text>
-
-        <text x="500" y="115"
-              text-anchor="middle"
-              font-family="Arial,sans-serif"
-              font-size="19" letter-spacing="5"
-              fill="${theme.main}">OFFICIAL MEMBER CARD</text>
-
-        <rect x="35" y="180" width="255" height="340"
-              rx="25" fill="${theme.accent}"/>
-
-        <image xlink:href="${uploadedPhotoData}"
-               x="40" y="185"
-               width="245" height="330"
-               preserveAspectRatio="xMidYMid slice"
-               clip-path="url(#photoClip)"/>
-
-        <text x="325" y="230"
-              font-family="Arial,sans-serif"
-              font-size="35" font-weight="bold"
-              fill="${theme.main}">${name}</text>
-
-        <rect x="325" y="250" width="190" height="43"
-              rx="22" fill="${theme.accent}"/>
-
-        <text x="420" y="278"
-              text-anchor="middle"
-              font-family="Arial,sans-serif"
-              font-size="22" font-weight="bold"
-              fill="${theme.main}">${role}</text>
-
-        <text x="325" y="345"
-              font-family="Arial,sans-serif"
-              font-size="22" font-weight="bold"
-              fill="${theme.main}">Date of Birth:</text>
-
-        <text x="555" y="345"
-              font-family="Arial,sans-serif"
-              font-size="22"
-              fill="${theme.main}">${dob}</text>
-
-        <text x="325" y="400"
-              font-family="Arial,sans-serif"
-              font-size="22" font-weight="bold"
-              fill="${theme.main}">Class:</text>
-
-        <text x="425" y="400"
-              font-family="Arial,sans-serif"
-              font-size="22"
-              fill="${theme.main}">${className}</text>
-
-        <text x="325" y="455"
-              font-family="Arial,sans-serif"
-              font-size="22" font-weight="bold"
-              fill="${theme.main}">Address:</text>
-
-        <text x="455" y="455"
-              font-family="Arial,sans-serif"
-              font-size="22"
-              fill="${theme.main}">${address}</text>
-
-        <!-- Floral decoration on right -->
-        <text x="850" y="235" font-size="55">🌸</text>
-        <text x="910" y="315" font-size="45">🌷</text>
-        <text x="825" y="390" font-size="48">🌼</text>
-        <text x="900" y="465" font-size="35">🌿</text>
-
-        <line x1="40" y1="550" x2="960" y2="550"
-              stroke="${theme.accent}" stroke-width="3"/>
-
-        <text x="500" y="585"
-              text-anchor="middle"
-              font-family="Arial,sans-serif"
-              font-size="19" letter-spacing="3"
-              fill="${theme.main}">SWEET SOULS • MEMBER ID CARD</text>
-
-    </svg>`;
-
-    const blob = new Blob([svg], {
-        type: "image/svg+xml;charset=utf-8"
-    });
-
-    const url = URL.createObjectURL(blob);
-    const image = new Image();
-
-    image.onload = function() {
-
-        const canvas = document.createElement("canvas");
-        canvas.width = 1000;
-        canvas.height = 631;
-
-        const context = canvas.getContext("2d");
-        context.drawImage(image, 0, 0, 1000, 631);
-
-        URL.revokeObjectURL(url);
-
-        canvas.toBlob(function(pngBlob) {
-
-            if (!pngBlob) {
-                alert("Download failed. Please try again.");
-                return;
-            }
-
-            const downloadUrl = URL.createObjectURL(pngBlob);
-            const link = document.createElement("a");
-
-            link.href = downloadUrl;
-            link.download = "Sweet_Souls_Member_Card.png";
-
-            document.body.appendChild(link);
-            link.click();
-            link.remove();
-
-            setTimeout(() => URL.revokeObjectURL(downloadUrl), 1000);
-
-        }, "image/png");
-    };
-
-    image.onerror = function() {
-        URL.revokeObjectURL(url);
-        alert("Card export failed. Please try another photo.");
-    };
-
-    image.src = url;
-});
-
+setInterval(createFallingItem, 650);
 </script>
 
 </body>
